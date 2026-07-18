@@ -1,7 +1,21 @@
+"use client";
+
 import { ButtonLink } from "@/components/ui/Button";
+import { Badge } from "@/components/ui/Badge";
 import { site } from "@/data/site";
+import { skillCategories } from "@/data/skills";
+import { useTypewriter } from "@/lib/useTypeWriter";
+
+const backendStack = skillCategories
+  .filter((category) => category.category === "Backend" || category.category === "Cloud")
+  .flatMap((category) => category.skills);
+
+const names = [site.name, site.nameTamil];
 
 export function Hero() {
+  const typedName = useTypewriter(names);
+  const typedRole = useTypewriter(site.roles, { typingSpeed: 55, deletingSpeed: 30 });
+
   return (
     <section
       id="home"
@@ -9,28 +23,42 @@ export function Hero() {
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full border border-[#27272A]/10"
+        className="pointer-events-none absolute -right-24 -top-24 h-70 w-70 rounded-sm border border-[#27272A]/10"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -left-32 bottom-0 h-72 w-72 rounded-full border border-[#27272A]/10"
+        className="pointer-events-none absolute -left-32 bottom-10 h-30 w-50 rounded-sm border border-[#27272A]/10"
       />
 
       <div className="mx-auto w-full max-w-6xl px-6 sm:px-8 lg:px-12">
-        <p className="reveal text-sm font-medium uppercase tracking-widest text-[#7C7D80]">
-          Hi, I&apos;m
+        <p className="reveal font-mono text-sm text-[#7C7D80]">
+          whoami
         </p>
-        <h1 className="reveal mt-3 text-4xl font-semibold text-[#282929] sm:text-5xl lg:text-6xl">
+
+        <h1 className="reveal mt-3 min-h-[1.2em] text-4xl inline-block font-semibold text-[#282929] sm:text-5xl lg:text-6xl">
           {site.name}
         </h1>
-        <p className="reveal mt-3 text-xl text-[#444444] sm:text-2xl">{site.title}</p>
+
+        <p className="reveal mt-3 min-h-[1.5em] text-xl text-[#444444] sm:text-2xl">
+          {typedRole}
+          <span aria-hidden className="cursor-blink ml-1 inline-block">
+            |
+          </span>
+        </p>
+
         <p className="reveal mt-6 max-w-xl text-base text-[#444444] sm:text-lg">
           {site.description}
         </p>
 
+        <div className="reveal mt-5 flex flex-wrap gap-2">
+          {backendStack.map((skill) => (
+            <Badge key={skill}>{skill}</Badge>
+          ))}
+        </div>
+
         <div className="reveal mt-8 flex flex-wrap gap-4">
           <ButtonLink href="#projects">View Projects</ButtonLink>
-          <ButtonLink href={site.resumeUrl} variant="secondary" download>
+          <ButtonLink href='/resume' variant="secondary">
             Download Resume
           </ButtonLink>
         </div>

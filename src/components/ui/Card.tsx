@@ -13,7 +13,7 @@ export function Card({ children, className = "" }: CardProps) {
 }
 
 export function CardHeader({ children, className = "" }: CardProps) {
-  return <div className={`space-y-1 ${className}`}>{children}</div>;
+  return <div className={`space-y-1 mt-4 ${className}`}>{children}</div>;
 }
 
 export function CardContent({ children, className = "" }: CardProps) {

@@ -5,15 +5,43 @@ export type SkillCategory = {
 
 export const skillCategories: SkillCategory[] = [
   {
-    category: "Frontend",
-    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+    category: "Web Development",
+    skills: ["React Js", "Redux", "Javascript"],
   },
   {
-    category: "Backend",
-    skills: ["Node.js", "Express"],
+    category: "Backend & Database",
+    skills: [
+      "PostgreSQL",
+      "REST APIs",
+      "Redis",
+      "JWT",
+      "Express Js",
+      "Bull MQ",
+      "Clickhouse",
+      "Kafka",
+    ],
   },
   {
-    category: "Cloud",
-    skills: ["Oracle Cloud Infrastructure", "Docker", "GitHub Actions"],
+    category: "Mobile Development",
+    skills: ["React Native"],
+  },
+  {
+    category: "Cloud & DevOps",
+    skills: [
+      "Firebase",
+      "Docker",
+      "Oracle Cloud Infrastructure (OCI)",
+    ],
+  },
+  {
+    category: "Version Control & Tools",
+    skills: ["Github", "Bitbucket", "Postman", "Linux"],
+  },
+  {
+    category: "Product & Third-Party Integrations",
+    skills: [
+      "Zoho (Zoho APIs)",
+      "Meta (WhatsApp Business APIs)",
+    ],
   },
 ];
