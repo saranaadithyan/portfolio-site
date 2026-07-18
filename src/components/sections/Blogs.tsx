@@ -26,7 +26,7 @@ export function Blogs() {
                   alt={post.title}
                   width={400}
                   height={225}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-contain"
                 />
               </div>
               <CardHeader>
@@ -41,6 +41,8 @@ export function Blogs() {
               <CardFooter>
                 <a
                   href={post.url}
+                  target="_blank"
+                  rel="noreferrer"
                   className="text-sm font-medium text-[#333333] hover:text-[#282929] hover:underline"
                 >
                   Read More

@@ -18,7 +18,7 @@ export function Certificates() {
                 alt={cert.title}
                 width={400}
                 height={225}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-contain"
               />
             </div>
             <CardHeader>
@@ -34,7 +34,7 @@ export function Certificates() {
                   href={cert.credentialUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-block text-sm font-medium text-[#333333] hover:text-[#282929]"
+                  className="inline-block text-sm font-medium text-[#333333] hover:text-[#282929] hover:underline"
                 >
                   View Credential
                 </a>

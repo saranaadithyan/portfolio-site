@@ -3,8 +3,8 @@ import { Section } from "@/components/ui/Section";
 import { Heading } from "@/components/ui/Heading";
 import { Badge } from "@/components/ui/Badge";
 
-const coreTechnologies = ["React", "Next.js", "TypeScript", "Node.js", "Docker"];
-const interests = ["Open Source", "System Design", "Photography", "Chess"];
+const coreTechnologies = ["React", "PostgreSQL", "Node.js", "Docker", "Linux"];
+const interests = ["System Design", "API Integration", "Cloud Computing"];
 
 export function About() {
   return (
@@ -14,7 +14,7 @@ export function About() {
       <div className="mt-10 grid gap-10 md:grid-cols-[280px_1fr] md:gap-16">
         <div className="reveal aspect-square w-full max-w-xs overflow-hidden rounded-xl border border-[#27272A]/15 bg-[#F8F8F8]">
           <Image
-            src="/placeholder-profile.svg"
+            src="/file.enc"
             alt="Profile photo"
             width={280}
             height={280}
@@ -23,9 +23,12 @@ export function About() {
         </div>
 
         <div className="reveal space-y-6">
-          <p className="text-base text-[#444444] sm:text-lg">
-            Placeholder professional summary. Describe your background, what you build, and the
-            kind of problems you enjoy solving.
+          <p className="text-base text-[#444444] sm:text-lg text-justify">
+            I help businesses turn ideas into scalable web and mobile applications that solve real problems, improve efficiency, and support long-term growth. From customer-facing platforms to internal business tools and third-party integrations, I build reliable, high-performance solutions that are easy to maintain and evolve.
+            <br /><br />
+            My expertise includes React, React Native, Node.js, PostgreSQL, Redis, Docker and cloud platforms such as Firebase and Oracle Cloud Infrastructure. I choose technologies based on business needs, focusing on performance, security, scalability, and long-term value rather than a one-size-fits-all approach.
+            <br /><br />
+            Beyond development, I collaborate with teams to design clean architectures, build reusable components, reduce technical debt, and establish efficient development practices. Whether it's developing a product, or improving engineering workflows, I focus on delivering software that creates measurable business impact.
           </p>
 
           {/* <dl className="grid gap-4 sm:grid-cols-2">

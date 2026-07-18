@@ -34,20 +34,38 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
     };
   }, []);
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const form = event.currentTarget;
+    const endpoint = 'https://formspree.io/f/myzdlknr';
+
+    if (!endpoint) {
+      console.error(
+        "NEXT_PUBLIC_FORMSPREE_ENDPOINT is not set — see .env.local.example.",
+      );
+      setStatus("error");
+      return;
+    }
+
     setStatus("loading");
 
-    setTimeout(() => {
-      try {
-        setStatus("success");
-        closeTimeoutRef.current = setTimeout(() => {
-          onClose();
-        }, 1500);
-      } catch {
-        setStatus("error");
-      }
-    }, 900);
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(form),
+      });
+
+      if (!response.ok) throw new Error("Formspree submission failed");
+
+      setStatus("success");
+      form.reset();
+      closeTimeoutRef.current = setTimeout(() => {
+        onClose();
+      }, 1500);
+    } catch {
+      setStatus("error");
+    }
   }
 
   const isLoading = status === "loading";
@@ -71,7 +89,7 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
               role="alert"
               className="flex items-center justify-between gap-3 rounded-lg border border-[#27272A]/20 bg-[#F8F8F8] px-4 py-3 text-sm text-[#444444]"
             >
-              <span>😞 Something went wrong sending your message.</span>
+              <span>Something went wrong sending your message.</span>
               <button
                 type="button"
                 onClick={() => setStatus("idle")}
@@ -108,11 +126,11 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
               variant="secondary"
               onClick={onClose}
               disabled={isLoading}
-              className="w-full sm:w-auto"
+              className="w-full sm:w-auto hover:cursor-pointer"
             >
               Cancel
             </Button>
-            <Button type="submit" disabled={isLoading} className="w-full sm:w-auto">
+            <Button type="submit" disabled={isLoading} className="w-full sm:w-auto hover:cursor-pointer">
               {isLoading ? (
                 <>
                   <span
@@ -147,7 +165,7 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
 function Field({ label, name, type }: { label: string; name: string; type: string }) {
   return (
     <div className="space-y-1.5">
-      <label htmlFor={name} className="text-sm font-medium text-[#282929]">
+      <label htmlFor={name} className="text-sm font-medium text-[#282929] hover:cursor-pointer">
         {label}
       </label>
       <input

@@ -25,7 +25,7 @@ export function Projects() {
                 alt={project.title}
                 width={400}
                 height={225}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-contain"
               />
             </div>
 
@@ -45,13 +45,13 @@ export function Projects() {
                   <Badge key={tech}>{tech}</Badge>
                 ))}
               </div>
-              <div className="flex flex-wrap gap-1.5">
+              {/* <div className="flex flex-wrap gap-1.5">
                 {project.tags.map((tag) => (
                   <span key={tag} className="text-xs text-[#7C7D80]">
                     #{tag}
                   </span>
                 ))}
-              </div>
+              </div> */}
             </CardContent>
 
             <CardFooter>
