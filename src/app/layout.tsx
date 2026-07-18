@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Electrolize } from "next/font/google";
 import { site } from "@/data/site";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next"
 
 const electrolize = Electrolize({
   subsets: ["latin"],
@@ -53,6 +54,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <Analytics />
         {children}
       </body>
     </html>

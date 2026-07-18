@@ -14,7 +14,7 @@ export function About() {
       <div className="mt-10 grid gap-10 md:grid-cols-[280px_1fr] md:gap-16">
         <div className="reveal aspect-square w-full max-w-xs overflow-hidden rounded-xl border border-[#27272A]/15 bg-[#F8F8F8]">
           <Image
-            src="/file.enc"
+            src="/profile.png"
             alt="Profile photo"
             width={280}
             height={280}
@@ -30,22 +30,7 @@ export function About() {
             <br /><br />
             Beyond development, I collaborate with teams to design clean architectures, build reusable components, reduce technical debt, and establish efficient development practices. Whether it's developing a product, or improving engineering workflows, I focus on delivering software that creates measurable business impact.
           </p>
-
-          {/* <dl className="grid gap-4 sm:grid-cols-2">
-            <div>
-              <dt className="text-sm font-medium uppercase tracking-widest text-[#7C7D80]">
-                Experience
-              </dt>
-              <dd className="mt-1 text-[#444444]">X years building web applications</dd>
-            </div>
-            <div>
-              <dt className="text-sm font-medium uppercase tracking-widest text-[#7C7D80]">
-                Current Role
-              </dt>
-              <dd className="mt-1 text-[#444444]">Your current role, Company</dd>
-            </div>
-          </dl> */}
-
+          
           <div>
             <p className="text-sm font-medium uppercase tracking-widest text-[#7C7D80]">
               Core Technologies

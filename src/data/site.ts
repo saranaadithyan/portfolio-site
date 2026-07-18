@@ -6,7 +6,7 @@ export const site = {
   shortTitle: "Developer Portfolio",
   description:
     "Portfolio of a full-stack developer building modern, performant web applications.",
-  url: "https://example.com",
+  url: "https://saran-aadithyan-portfolio.vercel.app",
   email: "saranaadithyanv@zohomail.in",
   resumeUrl: "https://workdrive.zohoexternal.in/embed/kdqtxb442a4c2dcde4ed4891c0b77bf4a63f2?toolbar=false&appearance=dark&themecolor=red",
   social: {
