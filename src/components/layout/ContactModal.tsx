@@ -39,14 +39,6 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
     const form = event.currentTarget;
     const endpoint = 'https://formspree.io/f/myzdlknr';
 
-    if (!endpoint) {
-      console.error(
-        "NEXT_PUBLIC_FORMSPREE_ENDPOINT is not set — see .env.local.example.",
-      );
-      setStatus("error");
-      return;
-    }
-
     setStatus("loading");
 
     try {
@@ -63,7 +55,8 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
       closeTimeoutRef.current = setTimeout(() => {
         onClose();
       }, 1500);
-    } catch {
+    } catch(e) {
+      console.error("Error submitting form:", e);
       setStatus("error");
     }
   }
@@ -74,7 +67,7 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
     <Modal open={open} onClose={onClose} title="Get in touch">
       {status === "success" ? (
         <div className="flex flex-col items-center gap-3 py-8 text-center">
-          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#ECECEC] text-2xl">
+          <span className="flex h-14 w-14 items-center justify-center rounded-lg bg-[#ECECEC] text-2xl">
             ✅
           </span>
           <p className="text-lg font-semibold text-[#282929]">Message sent!</p>
@@ -135,7 +128,7 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
                 <>
                   <span
                     aria-hidden
-                    className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white"
+                    className="h-4 w-4 animate-spin rounded-lg border-2 border-white/40 border-t-white"
                   />
                   Sending...
                 </>
