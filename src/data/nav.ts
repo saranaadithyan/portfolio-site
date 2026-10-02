@@ -13,6 +13,12 @@ export const navItems: NavItem[] = [
   { label: "Connect", href: "#contact", isModal: true },
 ];
 
-export const sectionIds = navItems
-  .filter((item) => !item.isModal)
-  .map((item) => item.href.replace("#", ""));
+// export const sectionIds = navItems
+//   .filter((item) => !item.isModal)
+//   .map((item) => item.href.replace("#", ""));
+
+export function hrefToId(href: string) {
+  return href.replace("/#", "");
+}
+
+export const sectionIds = navItems.filter((item) => !item.isModal).map((item) => hrefToId(item.href));
