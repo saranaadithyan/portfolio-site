@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { navItems, sectionIds } from "@/data/nav";
 import { site } from "@/data/site";
 import { useActiveSection } from "@/lib/useActiveSection";
@@ -24,14 +25,13 @@ export function Navbar() {
   return (
     <>
       <header
-        className={`sticky top-0 z-40 transition-colors duration-300 ${
-          scrolled ? "bg-[#D4D6D4]/80 backdrop-blur-md border-b border-[#27272A]/10" : "bg-transparent"
-        }`}
+        className={`sticky top-0 z-40 transition-colors duration-300 ${scrolled ? "bg-[#D4D6D4]/80 backdrop-blur-md border-b border-[#27272A]/10" : "bg-transparent"
+          }`}
       >
         <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4 sm:px-8 lg:px-12">
-          <a href="/" className="text-lg font-semibold text-[#282929]">
+          <Link href="/#home" className="text-lg font-semibold text-[#282929]">
             {site.name}
-          </a>
+          </Link>
 
           <ul className="hidden items-center gap-1 md:flex">
             {navItems.map((item) => (
@@ -109,8 +109,8 @@ function NavLink({
   }
 
   return (
-    <a href={item.href} onClick={onNavigate} className={`${baseClasses} ${activeClasses}`}>
+    <Link href={item.href} onClick={onNavigate} className={`${baseClasses} ${activeClasses}`}>
       {item.label}
-    </a>
+    </Link>
   );
 }

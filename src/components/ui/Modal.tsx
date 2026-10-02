@@ -50,14 +50,14 @@ export function Modal({ open, onClose, title, children }: ModalProps) {
           <h2 id="modal-title" className="text-xl font-semibold text-[#282929]">
             {title}
           </h2>
-          <button
+          {/* <button
             type="button"
             aria-label="Close"
             onClick={onClose}
             className="flex h-9 w-9 items-center justify-center rounded-lg text-[#333333] transition-colors duration-300 hover:bg-[#ECECEC]"
           >
             &times;
-          </button>
+          </button> */}
         </div>
         <div className="mt-4">{children}</div>
       </div>
