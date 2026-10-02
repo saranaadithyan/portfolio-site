@@ -1,5 +1,6 @@
 export const site = {
   name: "Saran Aadithyan V",
+  nameTamil:"",
   roles:["Full-Stack Developer","Backend Developer","API & System Engineer"],
   title: "Full-Stack Developer",
   shortTitle: "Developer Portfolio",
