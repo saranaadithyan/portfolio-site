@@ -82,7 +82,7 @@ export const projects: Project[] = [
 ];
 
 export function getAllProjects(): Project[] {
-  if (!fs.existsSync(PROJECTS_DIR)) return [];
+  // if (!fs.existsSync(PROJECTS_DIR)) return [];
   return projects
     .map((p) => ({
       slug: p.slug,
