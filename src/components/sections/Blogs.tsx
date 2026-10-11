@@ -49,7 +49,7 @@ export function PostCard({ post }: { post: ReturnType<typeof getAllPosts>[number
           alt={post.title}
           width={400}
           height={225}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-contain"
         />
       </div>
       <CardHeader>
