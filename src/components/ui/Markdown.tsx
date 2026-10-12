@@ -45,13 +45,41 @@ function CodeBlock({ children }: { children?: ReactNode }) {
   );
 }
 
+function MarkdownTable({ children }: { children?: ReactNode }) {
+  return (
+    <div className="not-prose my-8 overflow-x-auto rounded-xl border border-[#d5d7d5] bg-white shadow-sm">
+      <table className="m-0 min-w-full border-collapse text-left text-sm text-[#444444]">
+        {children}
+      </table>
+    </div>
+  );
+}
+
+function MarkdownTableHead({ children }: { children?: ReactNode }) {
+  return <thead className="bg-[#282929] text-xs uppercase tracking-wider text-white">{children}</thead>;
+}
+
+function MarkdownTableHeader({ children }: { children?: ReactNode }) {
+  return <th className="whitespace-nowrap px-4 py-3 font-semibold">{children}</th>;
+}
+
+function MarkdownTableCell({ children }: { children?: ReactNode }) {
+  return <td className="border-t border-[#e4e5e4] px-4 py-3 align-top even:bg-[#fafafa]">{children}</td>;
+}
+
 export function Markdown({ children }: { children: string }) {
   return (
-    <div className="prose prose-neutral mt-8 max-w-none prose-headings:text-[#282929] prose-p:text-[#444444] cursor-pointer">
+    <div className="prose prose-neutral mt-8 max-w-none prose-headings:text-[#282929] prose-p:text-[#444444]">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeSlug]}
-        components={{ pre: CodeBlock }}
+        components={{
+          pre: CodeBlock,
+          table: MarkdownTable,
+          thead: MarkdownTableHead,
+          th: MarkdownTableHeader,
+          td: MarkdownTableCell,
+        }}
       >
         {children}
       </ReactMarkdown>

@@ -78,7 +78,10 @@ export function Footer() {
 
         <div className="flex flex-col gap-2 border-t border-[#27272A]/10 pt-6 text-xs text-[#7C7D80] sm:flex-row sm:justify-center hover:cursor-pointer">
           <p>&copy; {new Date().getFullYear()} {site.name}. All rights reserved.</p>
-          {/* <p>Built with Next.js &amp; Tailwind CSS</p> */}
+          <span aria-hidden="true" className="hidden sm:inline">·</span>
+          {/* <p title="Current release version">Release v{packageJson.version}</p> */}
+          <p title="Current release version">Last Updated On 12-10-2026</p>
+
         </div>
       </div>
 
