@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Script from "next/script";
 import { Modal } from "@/components/ui/Modal";
 import { Button } from "@/components/ui/Button";
 import { site } from "@/data/site";
@@ -13,7 +12,7 @@ type ContactModalProps = {
 
 type Status = "idle" | "loading" | "success" | "error";
 
-const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+const formspreeEndpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
 
 export function ContactModal({ open, onClose }: ContactModalProps) {
   const [status, setStatus] = useState<Status>("idle");
@@ -21,11 +20,8 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
   const [prevOpen, setPrevOpen] = useState(open);
   const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const [everOpened, setEverOpened] = useState(open);
-
   if (open !== prevOpen) {
     setPrevOpen(open);
-    if (open) setEverOpened(true);
     if (!open) {
       setStatus("idle");
       setErrorMessage(null);
@@ -44,74 +40,11 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
     };
   }, []);
 
-  const containerRef = useRef<HTMLDivElement>(null);
-  const widgetIdRef = useRef<number | null>(null);
-  const pendingRef = useRef<{
-    resolve: (token: string) => void;
-    reject: (error: Error) => void;
-  } | null>(null);
-  const [scriptReady, setScriptReady] = useState(false);
-  const formVisible = open && status !== "success";
-
-  // Render the invisible widget whenever the form is on screen. The modal unmounts its
-  // children when closed, so the widget has to be re-created on each open.
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!formVisible || !scriptReady || !container || !recaptchaSiteKey) return;
-
-    window.grecaptcha?.ready(() => {
-      if (!containerRef.current || widgetIdRef.current !== null) return;
-      widgetIdRef.current = window.grecaptcha!.render(containerRef.current, {
-        sitekey: recaptchaSiteKey,
-        size: "invisible",
-        callback: (token) => {
-          pendingRef.current?.resolve(token);
-          pendingRef.current = null;
-        },
-        "error-callback": () => {
-          pendingRef.current?.reject(
-            new Error("reCAPTCHA verification failed"),
-          );
-          pendingRef.current = null;
-        },
-      });
-    });
-
-    return () => {
-      widgetIdRef.current = null;
-    };
-  }, [formVisible, scriptReady]);
-
-  function getRecaptchaToken(): Promise<string> {
-    return new Promise((resolve, reject) => {
-      if (!window.grecaptcha || widgetIdRef.current === null) {
-        reject(new Error("reCAPTCHA verification failed"));
-        return;
-      }
-      // An invisible challenge that the user dismisses never calls back, so time out.
-      const timeout = setTimeout(() => {
-        pendingRef.current = null;
-        reject(new Error("reCAPTCHA verification failed"));
-      }, 60_000);
-      pendingRef.current = {
-        resolve: (token) => {
-          clearTimeout(timeout);
-          resolve(token);
-        },
-        reject: (error) => {
-          clearTimeout(timeout);
-          reject(error);
-        },
-      };
-      window.grecaptcha.execute(widgetIdRef.current);
-    });
-  }
-
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
 
-    if (!recaptchaSiteKey) {
+    if (!formspreeEndpoint) {
       setStatus("error");
       setErrorMessage(
         "The contact form is unavailable right now. Please email me instead.",
@@ -123,13 +56,15 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
     setErrorMessage(null);
 
     try {
-      const token = await getRecaptchaToken();
       const data = Object.fromEntries(new FormData(form));
 
-      const response = await fetch("/api/contact", {
+      const response = await fetch(formspreeEndpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, token }),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       });
       const result = (await response.json().catch(() => null)) as {
         error?: string;
@@ -155,9 +90,6 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
             : error.message
           : null,
       );
-    } finally {
-      if (widgetIdRef.current !== null)
-        window.grecaptcha?.reset(widgetIdRef.current);
     }
   }
 
@@ -165,14 +97,6 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
 
   return (
     <>
-      {recaptchaSiteKey && everOpened ? (
-        <Script
-          src="https://www.google.com/recaptcha/api.js?render=explicit"
-          strategy="afterInteractive"
-          onReady={() => setScriptReady(true)}
-          onError={() => setScriptReady(false)}
-        />
-      ) : null}
       <Modal open={open} onClose={onClose} title="Get in touch">
         {status === "success" ? (
           <div className="flex flex-col items-center gap-3 py-8 text-center">
@@ -247,30 +171,6 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
               />
             </div>
 
-            <div ref={containerRef} />
-
-            <p className="text-xs text-[#7C7D80]">
-              Protected by reCAPTCHA. Google&apos;s{" "}
-              <a
-                href="https://policies.google.com/privacy"
-                target="_blank"
-                rel="noreferrer"
-                className="underline underline-offset-2"
-              >
-                Privacy Policy
-              </a>{" "}
-              and{" "}
-              <a
-                href="https://policies.google.com/terms"
-                target="_blank"
-                rel="noreferrer"
-                className="underline underline-offset-2"
-              >
-                Terms of Service
-              </a>{" "}
-              apply.
-            </p>
-
             <div className="flex flex-col-reverse gap-3 sm:flex-row">
               <Button
                 type="button"
@@ -283,7 +183,7 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
               </Button>
               <Button
                 type="submit"
-                disabled={isLoading || !recaptchaSiteKey}
+                disabled={isLoading || !formspreeEndpoint}
                 className="w-full sm:w-auto"
               >
                 {isLoading ? (
