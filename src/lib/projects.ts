@@ -83,7 +83,7 @@ export const projects: Project[] = [
     slug: "project-four",
     title: "Markdown Studio",
     summary:
-      "MD Studio is a polished, browser-based Markdown editor and viewer that combines focused writing tools, live preview, file-based workflows, and presentation-ready annotations in one responsive workspace.",
+      "Markdown Studio is a polished, browser-based Markdown editor and viewer that combines focused writing tools, live preview, file-based workflows, and presentation-ready annotations in one responsive workspace.",
     images: [{
       src: "/placeholder-project.png",
       alt: ""
