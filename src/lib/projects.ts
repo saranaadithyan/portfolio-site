@@ -32,8 +32,8 @@ function readProject(file: string): (Project & { content: string }) | null {
 export const projects: Project[] = [
   {
 
-    order:1,
-    slug: "project-one",
+    order:2,
+    slug: "product-quotation-app",
     title: "Offline Product Pricing App",
     summary:
       "A cross-platform mobile application developed with Flutter for offline product catalog management and dynamic price calculation.",
@@ -48,8 +48,8 @@ export const projects: Project[] = [
     tags: ["Mobile App"],
   },
   {
-    order:2,
-    slug: "project-two",
+    order:3,
+    slug: "labour-attendance-app",
     title: "Attendance Management App",
     summary:
       "An offline-first attendance management system built with React Native, designed for admin-controlled employee tracking with comprehensive reporting features.",
@@ -57,14 +57,14 @@ export const projects: Project[] = [
       src: "/placeholder-project.png",
       alt: ""
     }],
-    technologies: ["React", "React Native", "Offline", "Native Modules (Android)"],
+    technologies: ["Flutter", "Firebase"],
     githubUrl: "",
     status: "Live",
     tags: ["Mobile App"],
   },
   {
-    order:3,
-    slug: "project-three",
+    order:4,
+    slug: "inventory-management-app",
     title: "Inventory Management App",
     summary:
       "An inventory management system built with React Native, featuring real-time tracking, stock management, and reporting capabilities.",
@@ -79,8 +79,8 @@ export const projects: Project[] = [
     tags: ["Mobile App"],
   },
    {
-    order:4,
-    slug: "project-four",
+    order:1,
+    slug: "markdown-studio",
     title: "Markdown Studio",
     summary:
       "Markdown Studio is a polished, browser-based Markdown editor and viewer that combines focused writing tools, live preview, file-based workflows, and presentation-ready annotations in one responsive workspace.",
