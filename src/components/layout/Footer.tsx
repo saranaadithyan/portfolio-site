@@ -80,7 +80,7 @@ export function Footer() {
           <p>&copy; {new Date().getFullYear()} {site.name}. All rights reserved.</p>
           <span aria-hidden="true" className="hidden sm:inline">·</span>
           {/* <p title="Current release version">Release v{packageJson.version}</p> */}
-          <p title="Current release version">Last Updated On 12-10-2026</p>
+          <p title="Current release version">Last Updated On 12-11-2026</p>
 
         </div>
       </div>
