@@ -53,17 +53,7 @@ export function Projects() {
               </div>
             </CardContent>
 
-            {/* <CardFooter>
-              {project.githubUrl ? (
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-sm font-medium text-[#333333] hover:text-[#282929]"
-                >
-                  GitHub
-                </a>
-              ) : null}
+            <CardFooter>
               {project.liveUrl ? (
                 <a
                   href={project.liveUrl}
@@ -74,7 +64,7 @@ export function Projects() {
                   Live Demo
                 </a>
               ) : null}
-            </CardFooter> */}
+            </CardFooter>
           </Card>
         ))}
       </div>

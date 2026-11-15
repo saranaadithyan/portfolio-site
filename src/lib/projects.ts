@@ -78,6 +78,22 @@ export const projects: Project[] = [
     status: "Live",
     tags: ["Mobile App"],
   },
+   {
+    order:4,
+    slug: "project-four",
+    title: "Markdown Studio",
+    summary:
+      "MD Studio is a polished, browser-based Markdown editor and viewer that combines focused writing tools, live preview, file-based workflows, and presentation-ready annotations in one responsive workspace.",
+    images: [{
+      src: "/placeholder-project.png",
+      alt: ""
+    }],
+    technologies: ["Next JS", "Markdown", "Firebase"],
+    githubUrl: "",
+    liveUrl: "https://emulators-codelab-83191.web.app/",
+    status: "Live",
+    tags: ["Web App","Productivity"],
+  },
 
 ];
 
