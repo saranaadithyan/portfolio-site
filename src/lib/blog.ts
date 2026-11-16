@@ -37,6 +37,7 @@ function readPost(file: string): (BlogPost & { content: string; draft: boolean }
     readingTime: `${Math.max(1, Math.round(words / 200))} min read`,
     draft: Boolean(data.draft),
     content,
+    mdStudioURL: data.mdStudioURL
   };
 }
 
@@ -57,6 +58,7 @@ export function getAllPosts(): BlogPost[] {
       updatedAt: p.updatedAt,
       tags: p.tags,
       readingTime: p.readingTime,
+      mdStudioURL: p.mdStudioURL
     }))
     .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 }

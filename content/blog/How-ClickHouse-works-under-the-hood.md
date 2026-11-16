@@ -5,6 +5,7 @@ category: "Database - Deep Dive"
 publishedAt: 2026-10-10
 tags: ["Database", "Analytics", "OLAP"]
 coverImage: "/database_cover.png"
+mdStudioURL: "https://emulators-codelab-83191.web.app/?blog=CLICKHOUSE_INTERNALS"
 ---
 
 

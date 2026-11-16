@@ -5,6 +5,7 @@ category: "Database - Deep Dive"
 publishedAt: 2026-10-11
 tags: ["Database", "Transaction","Index", "OLTP"]
 coverImage: "/database_cover.png"
+mdStudioURL: "https://emulators-codelab-83191.web.app/?blog=POSTGRES_INTERNALS"
 ---
 
 
