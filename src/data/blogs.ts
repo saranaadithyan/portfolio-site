@@ -9,6 +9,7 @@ export type BlogPost = {
   url?: string;
   updatedAt?: string;
   tags: string[];
+  mdStudioURL:string
 };
 
 // export const blogPosts: BlogPost[] = [

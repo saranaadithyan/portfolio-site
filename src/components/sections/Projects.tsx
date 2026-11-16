@@ -34,9 +34,12 @@ export function Projects() {
             <CardHeader>
               <div className="flex items-center justify-between gap-2">
                 <h3 className="text-lg font-semibold text-[#282929]">
-                  <Link href={`/projects/${project.slug}`} className="hover:underline">
+                  {/* <Link href={`/projects/${project.slug}`} className="hover:underline">
                     {project.title}
-                  </Link>
+                  </Link> */}
+                   <span className="hover:underline">
+                    {project.title}
+                  </span>
                 </h3>
                 {/* <span className={`text-xs font-medium ${statusColors[project.status]}`}>
                   {project.status}
