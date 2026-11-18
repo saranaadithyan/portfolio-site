@@ -85,6 +85,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${electrolize.variable} h-full antialiased`}>
+      <meta name="google-site-verification" content="iGj4SE2TeGy6nolYn3XyQfR9OmOvpia8tOCCeXUwvrE" />
       <body className="min-h-full flex flex-col">
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
         <script
