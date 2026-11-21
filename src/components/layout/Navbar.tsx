@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { navItems, sectionIds } from "@/data/nav";
+import { hrefToId, navItems, sectionIds } from "@/data/nav";
 import { site } from "@/data/site";
 import { useActiveSection } from "@/lib/useActiveSection";
 import { ContactModal } from "./ContactModal";
@@ -38,7 +38,7 @@ export function Navbar() {
               <li key={item.label}>
                 <NavLink
                   item={item}
-                  active={activeId === item.href.replace("#", "")}
+                  active={activeId === hrefToId(item.href)}
                   onContactClick={() => setContactOpen(true)}
                 />
               </li>
@@ -63,7 +63,7 @@ export function Navbar() {
               <li key={item.label}>
                 <NavLink
                   item={item}
-                  active={activeId === item.href.replace("#", "")}
+                  active={activeId === hrefToId(item.href)}
                   onContactClick={() => {
                     setContactOpen(true);
                     setMobileOpen(false);

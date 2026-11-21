@@ -36,7 +36,7 @@ export function Certificates() {
                   rel="noreferrer"
                   className="inline-block text-sm font-medium text-[#333333] hover:text-[#282929] hover:underline"
                 >
-                  View Credential
+                  View Certificate
                 </a>
               ) : null}
             </CardContent>
