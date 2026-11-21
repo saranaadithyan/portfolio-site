@@ -5,11 +5,11 @@ export type NavItem = {
 };
 
 export const navItems: NavItem[] = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Blogs", href: "#blogs" },
-  { label: "Certifications", href: "#certificates" },
+  { label: "Home", href: "/#home" },
+  { label: "About", href: "/#about" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Blogs", href: "/#blogs" },
+  { label: "Certifications", href: "/#certificates" },
   { label: "Connect", href: "#contact", isModal: true },
 ];
 

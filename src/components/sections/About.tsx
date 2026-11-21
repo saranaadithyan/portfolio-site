@@ -24,11 +24,11 @@ export function About() {
 
         <div className="reveal space-y-6">
           <p className="text-base text-[#444444] sm:text-lg text-justify">
-            I help businesses turn ideas into scalable web and mobile applications that solve real problems, improve efficiency, and support long-term growth. From customer-facing platforms to internal business tools and third-party integrations, I build reliable, high-performance solutions that are easy to maintain and evolve.
+            I build technology that helps businesses grow, turning manual processes into automated workflows and ideas into scalable web applications that solve real problems and improve efficiency. From customer-facing platforms to internal business tools and third-party integrations like WhatsApp, payments and CRM systems, I build reliable, high-performance solutions that are easy to maintain and evolve.
             <br /><br />
-            My expertise includes React, React Native, Node.js, PostgreSQL, Redis, Docker and cloud platforms such as Firebase and Oracle Cloud Infrastructure. I choose technologies based on business needs, focusing on performance, security, scalability, and long-term value rather than a one-size-fits-all approach.
+            I bring a product-centric mindset to every project. I start with the business problem and the user, then choose technology based on impact, performance, security and long-term value rather than a one-size-fits-all approach. My core stack includes React, Node.js, PostgreSQL, Redis and Docker, with cloud experience on Firebase, Google Cloud and Oracle Cloud Infrastructure.
             <br /><br />
-            Beyond development, I collaborate with teams to design clean architectures, build reusable components, reduce technical debt, and establish efficient development practices. Whether it's developing a product, or improving engineering workflows, I focus on delivering software that creates measurable business impact.
+            I&apos;m also growing toward product ownership, shaping what gets built and why while staying hands-on with the code. I collaborate closely with tech teams on architecture and technical discussions, design clean, reusable systems, reduce technical debt and improve development practices, so the software I deliver creates measurable business impact.
           </p>
           
           <div>
